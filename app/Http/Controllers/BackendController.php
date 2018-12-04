@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\CustomClasses\Classes\PageblockHelper;
 
-class HomeController extends Controller
+class BackendController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -14,18 +13,16 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-
+        $this->middleware('auth');
     }
 
     /**
-     * Show the application dashboard.
+     * Show the pagebuilder backend.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $pageblocks = PageblockHelper::getAllActivePageblocks();
-
-        return view('home')->with('pageblocks', $pageblocks);
+        return view('backend');
     }
 }

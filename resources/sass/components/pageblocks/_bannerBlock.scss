@@ -1,0 +1,15 @@
+section.banner-block {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px;
+
+    &:after {
+        @include opacity();
+        content: '';
+    }
+
+    .banner-content {
+        color: $color-white;
+    }
+}

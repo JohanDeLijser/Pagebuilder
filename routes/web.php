@@ -11,10 +11,15 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('home');
+});
+
+Route::get('/backend', function () {
+    return view('backend');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/backend', 'BackendController@index')->name('backend');
