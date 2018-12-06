@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Models\PageblockModel;
 
 class BackendController extends Controller
 {
@@ -23,6 +23,12 @@ class BackendController extends Controller
      */
     public function index()
     {
-        return view('backend');
+        $allPageblocks = PageblockModel::getAllPageblocks();
+
+        return view('backend')->with('allPageblocks', $allPageblocks);
+    }
+
+    public function postBackendForm() {
+
     }
 }

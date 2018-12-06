@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\CustomClasses\Classes\PageblockHelper;
+use App\Http\Models\PageblockModel;
 
 class HomeController extends Controller
 {
@@ -24,8 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pageblocks = PageblockHelper::getAllActivePageblocks();
+        $activePageblocks = PageblockModel::getAllActivePageblocks();
 
-        return view('home')->with('pageblocks', $pageblocks);
+        return view('home')->with('activePageblocks', $activePageblocks);
     }
 }

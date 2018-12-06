@@ -1,9 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
 @section('content')
-    <div class="pageblocks">
-        @foreach ($pageblocks as $key => $pageblock)
-            @include('pageblocks.' . $pageblock)
+    <div class="frontend pageblocks">
+        @foreach ($activePageblocks as $key => $activePageblock)
+            <?php var_dump($activePageblock); ?>
+            @include('pageblocks.' . $activePageblock['type'])
         @endforeach
     </div>
 @endsection

@@ -1,23 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Backend</div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        You are logged in!
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="backend container">
+        <form action="{{ action('BackendController@postBackendForm') }}" method="post" role="form">
+            @foreach ($allPageblocks as $key => $pageblock)
+                @if( $pageblock->pageblock['type'] == 'banner')
+                    @include('backend.pageblocks.' . $pageblock->pageblock['type'])
+                @endif
+            @endforeach
+            <input id="submit-backend-form" type="submit" value="Save form"/>
+        </form>
     </div>
 @endsection

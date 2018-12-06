@@ -1,13 +1,17 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Source+Sans+Pro:400,700');
 
 // Variables
 @import 'variables';
 
+//helpers
+@import 'helpers/mixins';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import "base/base";
 @import "base/gridMeasurements";
 @import "base/typo";
 
