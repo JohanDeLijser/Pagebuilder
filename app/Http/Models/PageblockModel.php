@@ -84,11 +84,12 @@ class PageblockModel
             foreach ($fieldValues as $feildvalueKey => $fieldValue) {
                 $standardField = self::getPageblockField($fieldValue->fieldid)[0];
 
-                $activePageblocks[$key]['fields'][$feildvalueKey]['id'] = $fieldValue->id;
-                $activePageblocks[$key]['fields'][$feildvalueKey]['fieldid'] = $fieldValue->fieldid;
-                $activePageblocks[$key]['fields'][$feildvalueKey]['name'] = $standardField->name;
-                $activePageblocks[$key]['fields'][$feildvalueKey]['type'] = $standardField->type;
-                $activePageblocks[$key]['fields'][$feildvalueKey]['value'] = $fieldValue->value;
+                $activePageblocks[$key]['fields'][$standardField->fieldname]['id'] = $fieldValue->id;
+                $activePageblocks[$key]['fields'][$standardField->fieldname]['fieldid'] = $fieldValue->fieldid;
+                $activePageblocks[$key]['fields'][$standardField->fieldname]['fieldname'] = $standardField->fieldname;
+                $activePageblocks[$key]['fields'][$standardField->fieldname]['name'] = $standardField->name;
+                $activePageblocks[$key]['fields'][$standardField->fieldname]['type'] = $standardField->type;
+                $activePageblocks[$key]['fields'][$standardField->fieldname]['value'] = $fieldValue->value;
             }
         }
 
@@ -105,5 +106,30 @@ class PageblockModel
         $fieldvalues = DB::table('fieldvalues')->where('homepageblockid', $homepageblockid)->get();
 
         return $fieldvalues;
+    }
+
+    public static function getFieldIdByFieldName($fieldname) {
+        $fieldid = DB::table('pageblockfields')->where('fieldname', $fieldname)->get()[0];
+        return $fieldid->id;
+    }
+
+    public static function saveActivePageblocks($data) {
+        var_dump($data);
+
+        foreach ($data as $name => $item) {
+
+            $homepageblockidstring = substr($name, 0, strpos($name, "-"));
+            $homepageblockid = intval($homepageblockidstring);
+            $fieldName = str_replace($homepageblockidstring . '-', '', $name);
+            $fieldid = self::getFieldIdByFieldName($fieldName);
+
+            $exists = DB::table('fieldvalues')->where('homepageblockid', $homepageblockid)->where('fieldid', $fieldid)->exists();
+
+            if ($exists) {
+                DB::table('fieldvalues')->where('homepageblockid', $homepageblockid)->where('fieldid', $fieldid)->update(['value' => $item]);
+            } else {
+                DB::table('fieldvalues')->insert(['homepageblockid' => $homepageblockid, 'fieldid' => $fieldid, 'value' => $item]);
+            }
+        }
     }
 }

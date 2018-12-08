@@ -13,10 +13,7 @@ class PageblockHelper
         $renderableFields = array();
 
         foreach ($fields as $field) {
-
-            if (empty($renderableFields[$field['type']])) {
-                $renderableFields[$field['type']] = $field['value'];
-            }
+            $renderableFields[$field['fieldname']] = $field['value'];
         }
 
         return $renderableFields;

@@ -24,11 +24,18 @@ class BackendController extends Controller
     public function index()
     {
         $allPageblocks = PageblockModel::getAllPageblocks();
+        $allActivePageblocks = PageblockModel::getAllActivePageblocks();
 
-        return view('backend')->with('allPageblocks', $allPageblocks);
+        return view('backend')->with('allPageblocks', $allPageblocks)->with('allActivePageblocks', $allActivePageblocks);
     }
 
-    public function postBackendForm() {
+    public function postSaveBackendForm() {
+        PageblockModel::saveActivePageblocks($_POST);
+
+        $this->index();
+    }
+
+    public function postAddPageblock() {
 
     }
 }

@@ -16,6 +16,7 @@ class CreatePageblockfieldsTable extends Migration
         if (!Schema::hasTable('pageblockfields')) {
             Schema::create('pageblockfields', function (Blueprint $table) {
                 $table->increments('id');
+                $table->string('fieldname');
                 $table->string('name');
                 $table->string('type');
                 $table->integer('pageblockid');

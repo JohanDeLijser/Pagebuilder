@@ -23,5 +23,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/backend', 'BackendController@index')->name('backend');
+Route::get('/addpageblock', 'BackendController@index')->name('backend');
 
-Route::post('/backend', 'BackendController@postBackendForm');
+Route::post('/backend', 'BackendController@postSaveBackendForm');
+
+//Route::post('addpageblock', 'BackendController@postAddPageblock');
+
