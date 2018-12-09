@@ -15,7 +15,9 @@
 @import "base/gridMeasurements";
 @import "base/typo";
 
-@import "components/pageblocks/bannerBlock";
+@import "components/backend/base";
+
+@import "components/frontend/pageblocks/bannerBlock";
 
 .navbar-laravel {
   background-color: white;

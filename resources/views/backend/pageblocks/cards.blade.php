@@ -1,5 +1,5 @@
 <section <?php echo ($activePageblock['id']) ? 'id="' . $activePageblock['id'] . '"': ''; ?> class="backend cards-block">
-    <h2 class="col-12">{{ $pageblock->pageblock['name'] }}</h2>
+    <h2 class="col-12">Cards block</h2>
     <div class="fields col-12">
         <div class="row">
             <div class="col-12">

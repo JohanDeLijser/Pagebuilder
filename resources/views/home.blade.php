@@ -3,8 +3,10 @@
 @section('content')
     <div class="frontend pageblocks">
         @foreach ($activePageblocks as $key => $activePageblock)
-            <?php $fields = \App\Http\Classes\PageblockHelper::getRenderableFields($activePageblock['fields']); ?>
-            @include('pageblocks.' . $activePageblock['type'])
+            <?php if (!empty($activePageblock['fields'])) : ?>
+                <?php $fields = \App\Http\Classes\PageblockHelper::getRenderableFields($activePageblock['fields']); ?>
+                @include('pageblocks.' . $activePageblock['type'])
+            <?php endif; ?>
         @endforeach
     </div>
 @endsection

@@ -21,11 +21,14 @@ Route::get('/backend', function () {
 
 Auth::routes();
 
+Route::redirect('/', 'home');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/backend', 'BackendController@index')->name('backend');
-Route::get('/addpageblock', 'BackendController@index')->name('backend');
 
-Route::post('/backend', 'BackendController@postSaveBackendForm');
+Route::post('savebackend', 'BackendController@postSaveBackendForm');
+Route::post('addpageblock', 'BackendController@postAddPageblock');
+Route::get('deletePageblock', 'BackendController@postDeletePageblock');
 
-//Route::post('addpageblock', 'BackendController@postAddPageblock');
+
 

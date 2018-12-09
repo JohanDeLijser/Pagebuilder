@@ -1,4 +1,4 @@
-<section class="content-block">
+<section class="card-block">
     <div class="container">
         <?php if (!empty($fields['content_title_1'])) : ?>
             <h1>{{ $fields['content_title_1'] }}</h1>

@@ -93,7 +93,20 @@ class PageblockModel
             }
         }
 
+        usort($activePageblocks, function($a, $b) { return $a['order'] - $b['order']; });
+
         return $activePageblocks;
+    }
+
+    /**
+     * Gets the amount of active pageblocks
+     *
+     * @return int
+     */
+    public static function getAmountOfActivePageblocks() {
+        $count = DB::table('homepageblocks')->count();
+
+        return $count;
     }
 
     /**
@@ -108,28 +121,84 @@ class PageblockModel
         return $fieldvalues;
     }
 
+    /**
+     * Gets a field by its name
+     *
+     * @param $fieldname
+     * @return mixed
+     */
     public static function getFieldIdByFieldName($fieldname) {
         $fieldid = DB::table('pageblockfields')->where('fieldname', $fieldname)->get()[0];
         return $fieldid->id;
     }
 
+    /**
+     * Saves all active pageblock and their changes
+     *
+     * @param $data
+     */
     public static function saveActivePageblocks($data) {
-        var_dump($data);
 
         foreach ($data as $name => $item) {
-
             $homepageblockidstring = substr($name, 0, strpos($name, "-"));
             $homepageblockid = intval($homepageblockidstring);
             $fieldName = str_replace($homepageblockidstring . '-', '', $name);
-            $fieldid = self::getFieldIdByFieldName($fieldName);
 
-            $exists = DB::table('fieldvalues')->where('homepageblockid', $homepageblockid)->where('fieldid', $fieldid)->exists();
-
-            if ($exists) {
-                DB::table('fieldvalues')->where('homepageblockid', $homepageblockid)->where('fieldid', $fieldid)->update(['value' => $item]);
+            if ($fieldName === 'order') {
+                self::setPageblockOrder($homepageblockid, $item);
             } else {
-                DB::table('fieldvalues')->insert(['homepageblockid' => $homepageblockid, 'fieldid' => $fieldid, 'value' => $item]);
+                $fieldid = self::getFieldIdByFieldName($fieldName);
+
+                $exists = DB::table('fieldvalues')->where('homepageblockid', $homepageblockid)->where('fieldid', $fieldid)->exists();
+
+                if ($exists) {
+                    DB::table('fieldvalues')->where('homepageblockid', $homepageblockid)->where('fieldid', $fieldid)->update(['value' => $item]);
+                } else {
+                    DB::table('fieldvalues')->insert(['homepageblockid' => $homepageblockid, 'fieldid' => $fieldid, 'value' => $item]);
+                }
             }
         }
+    }
+
+    /**
+     * Adds new pageblock to the homepage and backend
+     *
+     * @param $data
+     */
+    public static function addNewPageblock($data) {
+        $count = self::getAmountOfActivePageblocks();
+        $pageblockid = intval($data['all-available-pageblocks-select']);
+
+        DB::table('homepageblocks')->insert(['pageblockid' => $pageblockid, 'order' => $count + 1]);
+    }
+
+    /**
+     * Set homepageblock order
+     *
+     * @param $homepageblockid
+     * @param $posdata
+     */
+    public static function setPageblockOrder($homepageblockid, $posdata) {
+        $oldPos = DB::table('homepageblocks')->where('id', $homepageblockid)->get()[0]->order;
+        $newPos = intval($posdata);
+
+        if ($oldPos !== $newPos) {
+            $replacingBlockId = DB::table('homepageblocks')->where('order', $newPos)->get()[0]->id;
+
+            DB::table('homepageblocks')->where('id', $homepageblockid)->update(['order' => $newPos]);
+            DB::table('homepageblocks')->where('id', $replacingBlockId)->update(['order' => $oldPos]);
+        }
+    }
+
+    /**
+     * Removes pageblock at which the delete button was clicked
+     *
+     * @param $homepageblockid
+     */
+    public static function removePageblockFromHome($homepageblockid) {
+        $homepageblockid = intval($homepageblockid['id']);
+
+        DB::table('homepageblocks')->where('id', $homepageblockid)->delete();
+        DB::table('fieldvalues')->where('homepageblockid', $homepageblockid)->delete();
     }
 }
