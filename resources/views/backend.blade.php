@@ -17,7 +17,7 @@
                                         </select>
                                     </div>
                                     <div class="col-6 delete-pageblock">
-                                        <a href="deletePageblock?id={{ $activePageblock['id'] }}" name="delete-block">Delete block</a>
+                                        <a href="deletePageblock?id={{ $activePageblock['id'] }}" class="btn" name="delete-block">Delete block</a>
                                     </div>
                                 </div>
                             </div>
@@ -28,16 +28,21 @@
                     </div>
                 @endforeach
             </div>
-            <input id="submit-backend-form" type="submit" value="Save form"/>
+            <div class="save-button-holder">
+                <div class="container text-right">
+                    <input id="submit-backend-form" class="btn btn-red" type="submit" value="Save form"/>
+                </div>
+            </div>
         </form>
 
-        <form action="{{ action('BackendController@postAddPageblock') }}" method="POST" role="form">
+        <form action="{{ action('BackendController@postAddPageblock') }}" method="POST" role="form" class="add-pageblock-form">
+            <h2>Add new pageblock</h2>
             <select id="all-available-pageblocks-select" class="all-available-pageblocks" name="all-available-pageblocks-select">
                 @foreach ($allPageblocks as $pageblock)
                     <option value="{{ $pageblock->pageblock['id'] }}">{{ $pageblock->pageblock['name'] }}</option>
                 @endforeach
             </select>
-            <input id="submit-add-pageblock" type="submit" value="Add pageblock"/>
+            <input id="submit-add-pageblock" type="submit" value="Add pageblock" class="btn btn-red"/>
         </form>
     </div>
 @endsection

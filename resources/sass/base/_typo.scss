@@ -6,3 +6,21 @@ h1, h2, h3, h4, h5, h6, a {
 * {
   font-family: 'Lato', sans-serif;
 }
+
+h1 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+
+  &:after {
+    @include transition();
+    content: '';
+    width: 30%;
+    height: 4px;
+    background: $color-hover-grey;
+    display: block;
+    position: absolute;
+    bottom: 0;
+  }
+}

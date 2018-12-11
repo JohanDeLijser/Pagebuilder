@@ -1,0 +1,17 @@
+.frontend {
+
+    section.text-image {
+
+        .image {
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 300px;
+
+            @include screen-xs {
+                margin-top: 20px;
+            }
+        }
+    }
+}

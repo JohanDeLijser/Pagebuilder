@@ -1,6 +1,70 @@
 .backend {
 
-    .pageblock {
-        padding: 50px 0;
+    .pageblocks {
+        padding: 0 30px;
+
+        .pageblock {
+            padding: 50px 0;
+
+            .pageblock-backend-controls {
+                box-shadow: $box-shadow;
+                background: $color-white;
+                padding: 15px;
+                margin-bottom: 20px;
+
+                .delete-pageblock {
+
+                    a {
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+
+    .save-button-holder {
+        background: $color-white;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        padding: 15px;
+        left: 0;
+        border-top: 2px solid $color-grey;
+        z-index: 99;
+    }
+
+    .add-pageblock-form {
+        box-shadow: $box-shadow;
+        margin-bottom: 200px;
+        margin-top: 20px;
+        padding: 15px;
+        background: $color-white;
+        text-align: right;
+
+        @include screen-xs {
+            text-align: left;
+
+            select {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        select {
+            height: 40px;
+            margin-right: 20px;
+            top: 1px;
+            position: relative;
+        }
+
+        h2 {
+            display: inline-block;
+            float: left;
+            margin: 0;
+        }
     }
 }

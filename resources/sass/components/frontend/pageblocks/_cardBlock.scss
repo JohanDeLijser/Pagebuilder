@@ -1,0 +1,95 @@
+.frontend {
+
+    section.card-block {
+
+        h1 {
+            margin-bottom: 50px;
+        }
+
+        .card {
+            @include transition();
+            @include border-radius(0);
+            box-shadow: $box-shadow;
+            border: 0;
+            height: 450px;
+            margin-bottom: 20px;
+            position: relative;
+            bottom: 0;
+            display: block;
+
+            &:hover {
+                bottom: 5px;
+                box-shadow: $box-shadow-hover;
+
+                .image {
+
+                    .content-holder {
+                        background: $color-white;
+
+                        h3, p {
+                            color: $color-black;
+                        }
+
+                        h3 {
+
+                            &:after {
+                                width: 120px;
+                                background: $color-red;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .image {
+                height: 100%;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+
+                &:after {
+                    @include gradient-y(transparent, $color-black);
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    z-index: 1;
+                }
+
+                .content-holder {
+                    @include transition();
+                    position: absolute;
+                    bottom: 0;
+                    padding: 20px;
+                    color: $color-white;
+                    z-index: 2;
+
+                    h3 {
+                        @include transition();
+                        padding-bottom: 15px;
+                        margin-bottom: 15px;
+                        position: relative;
+
+                        &:after {
+                            @include transition();
+                            content: '';
+                            width: 80px;
+                            height: 4px;
+                            background: $color-red;
+                            display: block;
+                            position: absolute;
+                            bottom: 0;
+                        }
+                    }
+
+                    p {
+                        @include transition();
+                        font-weight: 100;
+                    }
+                }
+            }
+        }
+    }
+}

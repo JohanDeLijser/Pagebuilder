@@ -21,23 +21,13 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+    <nav class="navbar navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/home') }}">
                 {{ config('app.name', 'Pagebuilder') }}
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-                </ul>
-
+            <div class="" id="navbarSupportedContent">
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
@@ -60,6 +50,19 @@
     <main>
         @yield('content')
     </main>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h5>Pagebuilder by</h5>
+                    <p>This pagebuilder was build by Johan de Lijser for the Avans Assessment voor instroom jaar 2</p>
+                </div>
+                <div class="col-12 copyright-footer">
+                    <p>&copy; <?php echo date('Y'); ?> all rights served</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
 </body>
 </html>

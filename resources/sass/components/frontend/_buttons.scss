@@ -1,0 +1,25 @@
+.btn {
+    @include border-radius(0);
+    @include transition();
+    background: $color-grey;
+    color: $color-black;
+    border: none;
+    border-left: 4px solid $color-grey;
+    font-weight: 600;
+
+    &.btn-red {
+        background: $color-red;
+        color: $color-white;
+        border-color: $color-red;
+        padding: 10px 15px;
+
+        &:hover {
+            color: $color-black;
+        }
+    }
+
+    &:hover {
+        border-color: $color-red;
+        background: $color-hover-grey;
+    }
+}

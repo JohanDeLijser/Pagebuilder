@@ -1,5 +1,5 @@
 .frontend section {
-    padding: 100px 0;
+    padding: 70px 0;
 
     @include screen-xs {
         padding: 30px 0;
@@ -21,6 +21,39 @@
     }
 
     @include screen-xs {
-        width: auto;
+        width: 100%;
+    }
+}
+
+footer {
+    display: block;
+    height: 250px;
+    background: #444444;
+    padding: 40px 0;
+    position: relative;
+
+    .container {
+        height: 100%;
+
+        .row {
+            height: 100%;
+        }
+    }
+
+    * {
+        color: $color-white;
+    }
+
+    p {
+        font-weight: 100;
+    }
+
+    .copyright-footer {
+
+        p {
+            margin: 0;
+            position: absolute;
+            bottom: 0;
+        }
     }
 }

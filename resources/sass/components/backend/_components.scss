@@ -1,0 +1,28 @@
+.backend {
+
+    select {
+        height: 100%;
+    }
+
+    label {
+        width: 100%;
+    }
+
+    input[type=text], input[type=number], textarea {
+        @include transition();
+        display: block;
+        border: 1px solid $color-grey;
+        padding: 10px 15px;
+        margin-top: 10px;
+        width: 100%;
+        outline: none;
+
+        &:active, &:focus {
+            border-left: 4px solid $color-red;
+        }
+    }
+
+    textarea {
+        height: 200px;
+    }
+}

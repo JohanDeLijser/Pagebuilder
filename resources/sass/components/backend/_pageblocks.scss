@@ -1,0 +1,15 @@
+.backend {
+
+    .cards-block {
+
+        .title {
+            margin-bottom: 20px;
+        }
+
+        .card {
+            @include border-radius(0);
+            padding: 15px;
+            border: 1px solid $color-grey;
+        }
+    }
+}

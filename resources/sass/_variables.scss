@@ -2,6 +2,9 @@
 // Body
 $body-bg: #f8fafc;
 
+$box-shadow         : 0 4px 20px -5px rgba(0, 0, 0, 0.2);
+$box-shadow-hover   : 0 8px 20px -5px rgba(0, 0, 0, 0.1);
+
 // Typography
 $font-family-sans-serif: "Nunito", sans-serif;
 $font-size-base: 0.9rem;
@@ -19,10 +22,11 @@ $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
 
-$color-primary      : #C6002A;
-$color-secondary    : #000001;
+$color-red          : #C6002A;
+$color-black        : #000001;
 $color-white        : #FFFFFF;
 $color-grey         : #EAEAEA;
+$color-hover-grey   : #d0d0d0;
 $color-text         : #000001;
 
 // screen break points

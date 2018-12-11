@@ -16,8 +16,14 @@
 @import "base/typo";
 
 @import "components/backend/base";
+@import "components/backend/components";
+@import "components/backend/pageblocks";
+
+@import "components/frontend/buttons";
 
 @import "components/frontend/pageblocks/bannerBlock";
+@import "components/frontend/pageblocks/cardBlock";
+@import "components/frontend/pageblocks/textimageBlock";
 
 .navbar-laravel {
   background-color: white;

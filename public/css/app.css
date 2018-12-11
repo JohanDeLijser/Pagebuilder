@@ -8533,8 +8533,8 @@ button.bg-dark:focus {
 }
 
 .shadow {
-  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  -webkit-box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.2) !important;
+          box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.2) !important;
 }
 
 .shadow-lg {
@@ -10485,7 +10485,7 @@ a.text-dark:focus {
 }
 
 .frontend section {
-  padding: 100px 0;
+  padding: 70px 0;
 }
 
 @media (max-width: 768px) {
@@ -10514,8 +10514,38 @@ a.text-dark:focus {
 
 @media (max-width: 768px) {
   .container {
-    width: auto;
+    width: 100%;
   }
+}
+
+footer {
+  display: block;
+  height: 250px;
+  background: #444444;
+  padding: 40px 0;
+  position: relative;
+}
+
+footer .container {
+  height: 100%;
+}
+
+footer .container .row {
+  height: 100%;
+}
+
+footer * {
+  color: #FFFFFF;
+}
+
+footer p {
+  font-weight: 100;
+}
+
+footer .copyright-footer p {
+  margin: 0;
+  position: absolute;
+  bottom: 0;
 }
 
 .container {
@@ -10537,8 +10567,186 @@ a {
   font-family: 'Lato', sans-serif;
 }
 
-.backend .pageblock {
+h1 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+h1:after {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  content: '';
+  width: 30%;
+  height: 4px;
+  background: #d0d0d0;
+  display: block;
+  position: absolute;
+  bottom: 0;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  h1:after {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+
+.backend .pageblocks {
+  padding: 0 30px;
+}
+
+.backend .pageblocks .pageblock {
   padding: 50px 0;
+}
+
+.backend .pageblocks .pageblock .pageblock-backend-controls {
+  -webkit-box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.2);
+  background: #FFFFFF;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.backend .pageblocks .pageblock .pageblock-backend-controls .delete-pageblock a {
+  float: right;
+}
+
+.backend .save-button-holder {
+  background: #FFFFFF;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding: 15px;
+  left: 0;
+  border-top: 2px solid #EAEAEA;
+  z-index: 99;
+}
+
+.backend .add-pageblock-form {
+  -webkit-box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 200px;
+  margin-top: 20px;
+  padding: 15px;
+  background: #FFFFFF;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .backend .add-pageblock-form {
+    text-align: left;
+  }
+
+  .backend .add-pageblock-form select {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .backend .add-pageblock-form .btn {
+    width: 100%;
+  }
+}
+
+.backend .add-pageblock-form select {
+  height: 40px;
+  margin-right: 20px;
+  top: 1px;
+  position: relative;
+}
+
+.backend .add-pageblock-form h2 {
+  display: inline-block;
+  float: left;
+  margin: 0;
+}
+
+.backend select {
+  height: 100%;
+}
+
+.backend label {
+  width: 100%;
+}
+
+.backend input[type=text],
+.backend input[type=number],
+.backend textarea {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  display: block;
+  border: 1px solid #EAEAEA;
+  padding: 10px 15px;
+  margin-top: 10px;
+  width: 100%;
+  outline: none;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .backend input[type=text],
+  .backend input[type=number],
+  .backend textarea {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+
+.backend input[type=text]:active,
+.backend input[type=text]:focus,
+.backend input[type=number]:active,
+.backend input[type=number]:focus,
+.backend textarea:active,
+.backend textarea:focus {
+  border-left: 4px solid #C6002A;
+}
+
+.backend textarea {
+  height: 200px;
+}
+
+.backend .cards-block .title {
+  margin-bottom: 20px;
+}
+
+.backend .cards-block .card {
+  border-radius: 0;
+  padding: 15px;
+  border: 1px solid #EAEAEA;
+}
+
+.btn {
+  border-radius: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  background: #EAEAEA;
+  color: #000001;
+  border: none;
+  border-left: 4px solid #EAEAEA;
+  font-weight: 600;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .btn {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+
+.btn.btn-red {
+  background: #C6002A;
+  color: #FFFFFF;
+  border-color: #C6002A;
+  padding: 10px 15px;
+}
+
+.btn.btn-red:hover {
+  color: #000001;
+}
+
+.btn:hover {
+  border-color: #C6002A;
+  background: #d0d0d0;
 }
 
 .frontend section.banner-block {
@@ -10580,6 +10788,161 @@ a {
   color: #FFFFFF;
   position: relative;
   z-index: 2;
+}
+
+.frontend section.banner-block .banner-content h1 {
+  padding: 0;
+}
+
+.frontend section.banner-block .banner-content h1:after {
+  display: none;
+}
+
+.frontend section.banner-block .banner-content .btn {
+  margin-top: 20px;
+}
+
+.frontend section.card-block h1 {
+  margin-bottom: 50px;
+}
+
+.frontend section.card-block .card {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  border-radius: 0;
+  -webkit-box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.2);
+  border: 0;
+  height: 450px;
+  margin-bottom: 20px;
+  position: relative;
+  bottom: 0;
+  display: block;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .frontend section.card-block .card {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+
+.frontend section.card-block .card:hover {
+  bottom: 5px;
+  -webkit-box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+.frontend section.card-block .card:hover .image .content-holder {
+  background: #FFFFFF;
+}
+
+.frontend section.card-block .card:hover .image .content-holder h3,
+.frontend section.card-block .card:hover .image .content-holder p {
+  color: #000001;
+}
+
+.frontend section.card-block .card:hover .image .content-holder h3:after {
+  width: 120px;
+  background: #C6002A;
+}
+
+.frontend section.card-block .card .image {
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.frontend section.card-block .card .image:after {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#000001));
+  background-image: linear-gradient(to bottom, transparent 0%, #000001 100%);
+  background-repeat: repeat-x;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.frontend section.card-block .card .image .content-holder {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  color: #FFFFFF;
+  z-index: 2;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .frontend section.card-block .card .image .content-holder {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+
+.frontend section.card-block .card .image .content-holder h3 {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .frontend section.card-block .card .image .content-holder h3 {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+
+.frontend section.card-block .card .image .content-holder h3:after {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  content: '';
+  width: 80px;
+  height: 4px;
+  background: #C6002A;
+  display: block;
+  position: absolute;
+  bottom: 0;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .frontend section.card-block .card .image .content-holder h3:after {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+
+.frontend section.card-block .card .image .content-holder p {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  font-weight: 100;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .frontend section.card-block .card .image .content-holder p {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+
+.frontend section.text-image .image {
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 300px;
+}
+
+@media (max-width: 768px) {
+  .frontend section.text-image .image {
+    margin-top: 20px;
+  }
 }
 
 .navbar-laravel {
